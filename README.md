@@ -81,9 +81,9 @@ You are given an array fruits where fruits[i] represents the type of fruit on th
 - Initialize an empty dictionary basket to track the count of fruit types within the window.
 - Expand the window by moving the right pointer and updating the count.
 - If the window exceeds two types, shrink it by moving left until it becomes valid.
+- Keep track of the maximum window size throughout the iteration.
 
 ---
 
-Keep track of the maximum window size throughout the iteration.
 ✅ Progress: 4/30 Days Complete
 📅 Stay tuned for more daily challenges!
