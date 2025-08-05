@@ -85,5 +85,33 @@ You are given an array fruits where fruits[i] represents the type of fruit on th
 
 ---
 
-✅ Progress: 4/30 Days Complete
+## ✅ Day 5: Fruits Into Baskets II
+
+**Problem Statement:**
+You are given two arrays of integers, fruits and baskets, both of length n. fruits[i] represents the quantity of the i-th type of fruit. baskets[j] represents the capacity of the j-th basket. From left to right, place each fruit into the leftmost basket whose capacity is greater than or equal to that fruit. Each basket can hold only one type of fruit. If no basket can hold a fruit, it remains unplaced.
+
+Goal: Return the number of fruit types that remain unplaced after allocation.
+
+**Constraints:**
+
+- n == fruits.length == baskets.length
+- 1 <= n <= 100
+- 1 <= fruits[i], baskets[i] <= 1000
+
+**Concepts:**
+
+- Greedy placement (left-to-right)
+- Linear search for the first valid position
+- Used-slot tracking (similar to bipartite matching logic)
+
+**Approach:**
+
+- Iterate over each fruit from left to right.
+- For each fruit, find the leftmost available basket that can hold it.
+- Mark the basket as used once occupied.
+- Count the number of fruits that could not be placed in any basket.
+
+---
+
+✅ Progress: 5/30 Days Complete
 📅 Stay tuned for more daily challenges!
