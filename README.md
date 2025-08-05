@@ -85,5 +85,5 @@ You are given an array fruits where fruits[i] represents the type of fruit on th
 ---
 
 Keep track of the maximum window size throughout the iteration.
-✅ Progress: 3/30 Days Complete
+✅ Progress: 4/30 Days Complete
 📅 Stay tuned for more daily challenges!
