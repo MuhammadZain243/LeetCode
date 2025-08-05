@@ -60,5 +60,30 @@ Given a list of fruit positions and amounts on the x-axis, determine the maximum
 
 ---
 
+## ✅ Day 4: Fruit Into Baskets
+
+**Problem Statement:**
+You are given an array fruits where fruits[i] represents the type of fruit on the i-th tree in a single row of trees. You can only carry fruits of at most two different types, but you can pick as many fruits as you want as long as they fit into your two baskets. Starting from any tree, collect fruits moving strictly to the right, picking exactly one fruit from each tree until you reach a tree with a third fruit type.
+
+**Constraints:**
+
+- 1 <= fruits.length <= 10^5
+- 0 <= fruits[i] < fruits.length
+
+**Concepts:**
+
+- Sliding window (two-pointer technique)
+- Hash map (dictionary) to track the count of each fruit type in the window
+
+**Approach:**
+
+- Use two pointers left and right to maintain a valid sliding window that contains at most 2 fruit types.
+- Initialize an empty dictionary basket to track the count of fruit types within the window.
+- Expand the window by moving the right pointer and updating the count.
+- If the window exceeds two types, shrink it by moving left until it becomes valid.
+
+---
+
+Keep track of the maximum window size throughout the iteration.
 ✅ Progress: 3/30 Days Complete
 📅 Stay tuned for more daily challenges!
