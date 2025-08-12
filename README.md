@@ -121,6 +121,8 @@ Pending
 
 Pending
 
+---
+
 ## ✅ Day 8: 808. Soup Servings
 
 **Problem Statement:**  
@@ -167,5 +169,71 @@ The process continues until either soup A or B becomes empty. Return the probabi
 
 ---
 
-✅ Progress: 6/30 Days Complete
+## ⏳ Day 9: 231. Power of Two
+
+Pending
+
+## ⏳ Day 10: 869. Reordered Power of 2
+
+Pending
+
+## ⏳ Day 11: 2438. Range Product Queries of Powers
+
+Pending
+
+---
+
+## ✅ Day 12: 2787. Ways to Express an Integer as Sum of Powers
+
+**Problem Statement:**  
+Given two positive integers `n` and `x`, return the number of ways `n` can be expressed as the sum of the `x`th power of **unique** positive integers.  
+In other words, count the sets `[n1, n2, ..., nk]` such that:
+
+`n = n1^x + n2^x + ... + nk^x`
+
+Since the result can be very large, return it modulo `10^9 + 7`.
+
+**Constraints:**
+
+- `1 <= n <= 300`
+- `1 <= x <= 5`
+
+**Concepts Used:**
+
+- Dynamic Programming (Bottom-Up)
+- 2D DP State Definition
+- Iterative Table Filling
+- Modular Arithmetic
+
+**Approach:**
+
+1. **DP State Definition:**  
+   Let `dp[k][j]` be the number of ways to form sum `k` using integers ≤ `j` (where each integer is raised to the power `x`).
+
+2. **State Transition:**  
+    For each `j` (from `1` to `max_num` where `max_num^x <= n`):
+
+   - **Exclude `j`**: Use only numbers ≤ `j-1` → `dp[k][j-1]`
+   - **Include `j`**: If `k >= j^x`, add `dp[k - j^x][j-1]`
+
+   Thus:
+
+   - `dp[k][j] = dp[k][j-1] + dp[k - j^x][j-1] (if k >= j^x)`
+   - `dp[k][j] = dp[k][j-1]` (otherwise)
+
+3. **Base Case:**
+
+- `dp[0][j] = 1` for all `j` (sum 0 can always be formed by choosing no numbers).
+
+4. **Answer:**  
+   The final result is `dp[n][max_num] % (10^9 + 7)`.
+
+**Complexity:**
+
+- **Time:** `O(n * m)` where `m` is the number of integers whose `x`th power ≤ `n`.
+- **Space:** `O(n * m)`
+
+---
+
+✅ Progress: 7/30 Days Complete
 📅 Stay tuned for more daily challenges!
