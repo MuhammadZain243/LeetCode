@@ -2,8 +2,6 @@
 
 This document summarizes the tasks completed each day, along with the core logic and solution approaches used.
 
----
-
 ## ✅ Day 1: 118. Pascal's Triangle
 
 **Problem Statement:**  
@@ -19,8 +17,6 @@ Generate the first `numRows` of Pascal's Triangle.
 - For each row, use the last row to compute the new values.
 - Each value is the sum of two adjacent values from the previous row.
 - First and last elements of every row are `1`.
-
----
 
 ## ✅ Day 2: 2561. Rearranging Fruits
 
@@ -39,8 +35,6 @@ You are given two fruit baskets. You can swap fruits between them. Find the mini
 - Find extra fruits in each.
 - Sort and match from both baskets, considering smallest swap cost or double the global minimum.
 
----
-
 ## ✅ Day 3: 2106. Maximum Fruits Harvested After at Most K Steps
 
 **Problem Statement:**
@@ -57,8 +51,6 @@ Given a list of fruit positions and amounts on the x-axis, determine the maximum
 - Use a sliding window from left to right.
 - At each step, check if the current window is valid based on minimal distance calculation.
 - Update the running total and keep track of the max.
-
----
 
 ## ✅ Day 4: 904. Fruit Into Baskets
 
@@ -82,8 +74,6 @@ You are given an array fruits where fruits[i] represents the type of fruit on th
 - Expand the window by moving the right pointer and updating the count.
 - If the window exceeds two types, shrink it by moving left until it becomes valid.
 - Keep track of the maximum window size throughout the iteration.
-
----
 
 ## ✅ Day 5: 3477. Fruits Into Baskets II
 
@@ -120,8 +110,6 @@ Pending
 ## ⏳ Day 7: 3363. Find the Maximum Number of Fruits Collected
 
 Pending
-
----
 
 ## ✅ Day 8: 808. Soup Servings
 
@@ -167,8 +155,6 @@ The process continues until either soup A or B becomes empty. Return the probabi
 4. **Memoization:**  
    Use a dictionary `memory` to store results of already computed states to avoid redundant computation.
 
----
-
 ## ⏳ Day 9: 231. Power of Two
 
 Pending
@@ -180,8 +166,6 @@ Pending
 ## ⏳ Day 11: 2438. Range Product Queries of Powers
 
 Pending
-
----
 
 ## ✅ Day 12: 2787. Ways to Express an Integer as Sum of Powers
 
@@ -233,7 +217,43 @@ Since the result can be very large, return it modulo `10^9 + 7`.
 - **Time:** `O(n * m)` where `m` is the number of integers whose `x`th power ≤ `n`.
 - **Space:** `O(n * m)`
 
----
+## ✅ Day 13: 326. Power of Three
 
-✅ Progress: 7/30 Days Complete
+**Problem Statement:**  
+Given an integer `n`, return `true` if it is a power of three. Otherwise, return `false`.  
+An integer `n` is a power of three if there exists an integer `x` such that:
+
+`n == 3^x`
+
+**Constraints:**
+
+- `-2^31 <= n <= 2^31 - 1`
+
+### **Concepts Used**
+
+- Loop-based check
+- Modular arithmetic
+- Division until base case
+
+### **Approach**
+
+1. **Base Check:**
+
+   - If `n <= 0`, it cannot be a power of three, so return `False`.
+
+2. **Division Loop:**
+
+   - While `n` is divisible by 3 (`n % 3 == 0`), divide it by 3.
+   - This keeps reducing `n` closer to 1 if it’s a power of three.
+
+3. **Final Check:**
+   - If after all divisions `n` becomes 1, then it is a power of three.
+   - Otherwise, it is not.
+
+### **Complexity**
+
+- **Time:** `O(log₃ n)` – we keep dividing by 3 until we reach 1.
+- **Space:** `O(1)` – constant extra space.
+
+✅ Progress: `8/30` Days Complete
 📅 Stay tuned for more daily challenges!
