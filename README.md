@@ -255,5 +255,49 @@ An integer `n` is a power of three if there exists an integer `x` such that:
 - **Time:** `O(log₃ n)` – we keep dividing by 3 until we reach 1.
 - **Space:** `O(1)` – constant extra space.
 
-✅ Progress: `8/30` Days Complete
+## ✅ Day 14: 2264. Largest 3-Same-Digit Number in String
+
+**Problem Statement:**  
+You are given a string `num` representing a large integer.  
+A _good integer_ is a substring of length **3** consisting of only **one unique digit**.
+
+Return the largest good integer as a string. If no such integer exists, return an empty string `""`.  
+Note: A substring is a contiguous sequence of characters within a string.
+
+**Constraints:**
+
+- `3 <= len(num) <= 1000`
+- `num` consists only of digits.
+
+### **Concepts Used**
+
+- String search
+- Substring matching
+- Loop from high to low for optimization
+
+### **Approach**
+
+1. **Descending Digit Check:**
+
+   - Loop from digit `9` down to `0`.
+   - For each digit, create a string of length `3` (e.g., `"999"`, `"888"`, ...).
+
+2. **Substring Search:**
+
+   - Use the `in` operator to check if this 3-digit substring exists in `num`.
+
+3. **Early Return:**
+
+   - Since we start from the largest digit, the first match found is the largest good integer.
+   - Return immediately upon finding it.
+
+4. **No Match Case:**
+   - If no good integer is found after the loop, return an empty string.
+
+### **Complexity**
+
+- **Time:** `O(10 * n)` → effectively `O(n)`, where `n` is the length of the string.
+- **Space:** `O(1)` – only constant extra variables are used.
+
+✅ Progress: `9/30` Days Complete
 📅 Stay tuned for more daily challenges!
