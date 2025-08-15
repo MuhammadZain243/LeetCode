@@ -299,5 +299,42 @@ Note: A substring is a contiguous sequence of characters within a string.
 - **Time:** `O(10 * n)` → effectively `O(n)`, where `n` is the length of the string.
 - **Space:** `O(1)` – only constant extra variables are used.
 
-✅ Progress: `9/30` Days Complete
+## ✅ Day 15: 342. Power of Four
+
+**Problem Statement:**  
+Given an integer `n`, return `True` if it is a power of four. Otherwise, return `False`.  
+An integer `n` is a power of four if there exists an integer `x` such that:
+`n == 4^x`
+
+**Constraints:**
+
+- `-2^31 <= n <= 2^31 - 1`
+
+### **Concepts Used**
+
+- Mathematical properties of powers
+- Loop-based division
+- Edge case handling for negatives and zero
+
+### **Approach**
+
+1. **Edge Case Check:**
+
+   - If `n` is less than `1` (including negatives and zero), immediately return `False` because powers of four are strictly positive.
+
+2. **Division Loop:**
+
+   - While `n` is divisible by `4`, divide it by `4`.
+   - This reduces `n` step-by-step, checking if it can be fully broken down into factors of `4`.
+
+3. **Final Check:**
+   - If the final reduced number is `1`, `n` is a power of four.
+   - Otherwise, it is not.
+
+### **Complexity**
+
+- **Time:** `O(log₄ n)` – Each division reduces `n` by a factor of `4`.
+- **Space:** `O(1)` – Only constant extra memory is used.
+
+✅ Progress: `10/30` Days Complete
 📅 Stay tuned for more daily challenges!
