@@ -452,7 +452,7 @@ An integer `n` is a power of four if there exists an integer `x` such that:
 - **Time:** `O(log₄ n)` – Each division reduces `n` by a factor of `4`.
 - **Space:** `O(1)` – Only constant extra memory is used.
 
-## ✅ Day 19: 1323. Maximum 69 Number
+## ✅ Day 16: 1323. Maximum 69 Number
 
 **Problem Statement:**  
 You are given a positive integer `num` consisting only of digits `6` and `9`.  
