@@ -155,17 +155,133 @@ The process continues until either soup A or B becomes empty. Return the probabi
 4. **Memoization:**  
    Use a dictionary `memory` to store results of already computed states to avoid redundant computation.
 
-## ⏳ Day 9: 231. Power of Two
+## ✅ Day 9: 231. Power of Two
 
-Pending
+**Problem Statement:**  
+Given an integer `n`, return `True` if it is a power of two. Otherwise, return `False`.  
+An integer `n` is a power of two if there exists an integer `x` such that:  
+`n == 2^x`
 
-## ⏳ Day 10: 869. Reordered Power of 2
+**Constraints:**
 
-Pending
+- `-2^31 <= n <= 2^31 - 1`
 
-## ⏳ Day 11: 2438. Range Product Queries of Powers
+### **Concepts Used**
 
-Pending
+- Bit manipulation (`<<` operator for left shift)
+- Loop iteration for checking powers
+- Edge case handling for negatives and zero
+
+### **Approach**
+
+1. **Edge Case Check:**
+
+   - If `n <= 0`, immediately return `False` since powers of two are strictly positive.
+
+2. **Iterative Power Generation:**
+
+   - Start with `i = 1` (i.e., `2^0`).
+   - Keep left-shifting (`i <<= 1`) which multiplies `i` by `2` on each step.
+   - Compare with `n` at each step.
+
+3. **Final Check:**
+   - If `i == n` at any point, return `True`.
+   - If `i` exceeds `n`, return `False`.
+
+### **Complexity**
+
+- **Time:** `O(log₂ n)` – Each left shift doubles `i`, so the loop runs ~log₂(n) times.
+- **Space:** `O(1)` – Only a single variable is used.
+
+## ✅ Day 10: 869. Reordered Power of 2
+
+**Problem Statement:**  
+You are given an integer `n`. Return `True` if the digits of `n` can be reordered to form a power of two. Otherwise, return `False`.
+
+**Constraints:**
+
+- `1 <= n <= 10^9`
+
+### **Concepts Used**
+
+- String manipulation
+- Sorting digits
+- Powers of two with bitwise left shift (`1 << i`)
+- Brute-force digit comparison
+
+### **Approach**
+
+1. **Convert to Digits:**
+
+   - Convert `n` into a string and sort its digits (`target = sorted(str(n))`).
+   - This gives a canonical representation of `n`’s digits.
+
+2. **Generate Powers of Two:**
+
+   - Iterate over possible powers of two up to `2^29` (since `2^30 = 1,073,741,824` > `10^9`).
+   - For each `2^i`, convert it into a string and sort its digits.
+
+3. **Compare Digits:**
+   - If the sorted digits of any power of two match the sorted digits of `n`, return `True`.
+   - Otherwise, after the loop ends, return `False`.
+
+### **Complexity**
+
+- **Time:** `O(30 * k log k)` – At most 30 powers of two are checked, each requiring sorting of at most 10 digits (`k = number of digits`).
+- **Space:** `O(k)` – For storing digit arrays.
+
+## ✅ Day 11: 2438. Range Product Queries of Powers
+
+**Problem Statement:**  
+You are given a positive integer `n` and an array of queries, where each query is a pair `[l, r]`.
+
+1. Convert `n` into a list of powers of two based on its binary representation.
+   - For example: `n = 15 (1111 in binary)` → powers = `[1, 2, 4, 8]`
+2. For each query `[l, r]`, compute the product of all powers from index `l` to `r`, modulo `10^9 + 7`.
+
+Return the results as a list.
+
+**Constraints:**
+
+- `1 <= n <= 10^9`
+- `1 <= queries.length <= 10^4`
+- `queries[i] = [l, r]` with `0 <= l <= r < k` (`k` = number of set bits in `n`)
+
+### **Concepts Used**
+
+- Binary representation
+- Modular arithmetic (modular inverse with Fermat’s little theorem)
+- Prefix product array for efficient range queries
+
+### **Approach**
+
+1. **Build Powers Array:**
+
+   - Traverse the binary representation of `n`.
+   - For every set bit, record the corresponding power of two.
+
+2. **Prefix Product Computation:**
+
+   - Precompute prefix products of the powers array modulo `10^9 + 7`.
+   - This allows efficient range multiplication queries.
+
+3. **Answer Queries:**
+   - For each `[l, r]`, compute:
+     ```
+     product = (prefix[r+1] * mod_inverse(prefix[l])) % MOD
+     ```
+   - `mod_inverse` is computed using Fermat’s Little Theorem:
+     ```
+     pow(x, MOD-2, MOD)
+     ```
+     since `MOD` is prime.
+
+### **Complexity**
+
+- **Time:** `O(k + q * log MOD)`
+  - `k` = number of set bits in `n`
+  - `q` = number of queries
+- **Space:** `O(k)` – For storing powers and prefix products
 
 ## ✅ Day 12: 2787. Ways to Express an Integer as Sum of Powers
 
@@ -336,5 +452,47 @@ An integer `n` is a power of four if there exists an integer `x` such that:
 - **Time:** `O(log₄ n)` – Each division reduces `n` by a factor of `4`.
 - **Space:** `O(1)` – Only constant extra memory is used.
 
-✅ Progress: `10/30` Days Complete
+## ✅ Day 19: 1323. Maximum 69 Number
+
+**Problem Statement:**  
+You are given a positive integer `num` consisting only of digits `6` and `9`.  
+Return the maximum number you can obtain by changing **at most one digit** (`6` → `9` or `9` → `6`).
+
+**Constraints:**
+
+- `1 <= num <= 10^4`
+- Digits of `num` contain only `6` and `9`
+
+### **Concepts Used**
+
+- String manipulation
+- Greedy choice (change the leftmost `6`)
+- Conversion between string and integer
+
+### **Approach**
+
+1. **Convert Number to List:**
+
+   - Transform `num` into a list of characters so digits can be modified.
+
+2. **Iterate Over Digits:**
+
+   - Traverse from left to right.
+   - When the first `'6'` is found, temporarily change it to `'9'`.
+
+3. **Check for Maximum:**
+
+   - Convert the modified list back into an integer.
+   - If this new value is greater than the current maximum (`num`), update `num`.
+   - Restore the digit back to `'6'` to allow further iterations (if needed).
+
+4. **Return Result:**
+   - After scanning all digits, return the maximum number formed.
+
+### **Complexity**
+
+- **Time:** `O(d)` – where `d` is the number of digits in `num` (at most 4).
+- **Space:** `O(d)` – list representation of the number.
+
+✅ Progress: `14/30` Days Complete
 📅 Stay tuned for more daily challenges!
